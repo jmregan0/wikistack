@@ -4,3 +4,5 @@ var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
 
 var app = express();
+
+module.exports.app = app;
