@@ -27,6 +27,23 @@ var Page = db.define('page', {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
   }
+
+}, {
+  hooks: {
+    beforeValidate: function (page){
+        console.log('page', page);
+
+        var title = page.title;
+        console.log('title', title);
+
+        var nonAlph = /[^a-zA-Z0-9_]/g;
+        var noSpace = /[' ']/g;
+        if(title){
+            page.urlTitle = title.replace(noSpace, '_').replace(nonAlph, '');
+        } else{
+            page.urlTitle = Math.random().toString(36).substring(2, 7);
+        }
+    }}
 });
 
 
@@ -42,7 +59,7 @@ var User = db.define('user', {
     validate: {
       isEmail: true
     }
-  } 
+  }
 });
 
  module.exports = {
