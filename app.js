@@ -4,16 +4,15 @@ var express = require('express');
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
 const models = require('./models/index.js');
-const routes = require('./routes');
+const routes = require('./routes/index.js');
 
 let app = express();
+
 module.exports = app;
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-
-
-
 
 
 
@@ -26,6 +25,6 @@ models.db.sync({force: true})
 .catch(console.error);
 
 
-app.use('/',routes);
+app.use('/', routes);
 
 
