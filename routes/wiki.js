@@ -1,9 +1,11 @@
 const express = require('express');
-const wikiRouter = express();
+const wikiRouter = express.Router();
+const path = require('path');
+
+
 
 wikiRouter.get('/', function(req,res) {
-    console.log('wiki pages');
-    res.send();
+    res.redirect('/');
 })
 
 wikiRouter.post('/', function(req,res) {
@@ -13,8 +15,10 @@ wikiRouter.post('/', function(req,res) {
 
 wikiRouter.get('/add', function(req,res) {
     // retrieve add page form
-    res.render('addpage.html');
+    res.render('addpage');
 })
+
+
 
 
 module.exports = wikiRouter;
