@@ -10,6 +10,9 @@ let app = express();
 
 module.exports = app;
 
+app.use(express.static('public'));
+app.use(express.static('views'));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
